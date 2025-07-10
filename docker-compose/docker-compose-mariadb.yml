@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: shellkitty_mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: rootpass
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: password123
+      MARIADB_DATABASE: bankssimulator
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
