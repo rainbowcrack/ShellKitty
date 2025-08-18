@@ -52,6 +52,7 @@ echo "Docker e Compose estao prontos!"
 echo ""
 
 # +++ Menu principal +++
+echo "================= SHELLKITTY Docker MENU ================="
 echo "Escolha uma opcao:"
 echo "1 - Iniciar containers (reaproveitar imagens antigas)"
 echo "2 - Iniciar containers (reconstruir imagens)"
@@ -62,7 +63,7 @@ echo "6 - Ver containers ativos"
 echo "7 - Ver todos os containers"
 echo "8 - Ver logs da aplicacao"
 echo "0 - Sair"
-echo ""
+echo "=========================================================="
 
 read -p "Digite a opcao desejada: " opcao
 
