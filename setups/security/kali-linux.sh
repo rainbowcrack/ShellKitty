@@ -26,7 +26,7 @@ docker run -it \
   debian bash -c "
     apt update &&
     apt install -y sudo git python3 curl gnupg software-properties-common &&
-    echo 'Instalando Katoolin...' &&
+    echo 'Install Katoolin...' &&
     git clone https://github.com/LionSec/katoolin.git &&
     cp katoolin/katoolin.py /usr/bin/katoolin &&
     chmod +x /usr/bin/katoolin &&
@@ -36,7 +36,7 @@ docker run -it \
 
 echo ""
 echo "=================================================="
-echo " Ambiente encerrado (emulacao de falso kali linux)"
+echo " Ambiente encerrado (simulation fake - kali linux)"
 echo "Containers ativos agora:"
 docker ps
 echo "=================================================="

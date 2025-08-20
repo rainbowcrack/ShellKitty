@@ -1,11 +1,11 @@
 #!/bin/bash
 
 clear
-echo "Iniciando verificacao do ambiente Docker..."
+echo "Starting Docker environment verification..."
 
 # +++ Funcao para instalar Docker em sistemas baseados em Debian/Ubuntu +++
 instalar_docker() {
-  echo "Instalando Docker e Docker Compose..."
+  echo "Installing Docker e Docker Compose..."
   sudo apt update
   sudo apt install -y \
     ca-certificates \
@@ -26,90 +26,90 @@ instalar_docker() {
   sudo systemctl enable docker
   sudo systemctl start docker
 
-  echo "Docker instalado com sucesso!"
+  echo "Docker installed successfully!"
 }
 
 # +++ Verifica se Docker esta instalado +++
 if ! command -v docker &> /dev/null; then
-  echo "Docker nao encontrado."
-  read -p "Deseja instalar o Docker agora? (s/n): " instalar
+  echo "Docker not found."
+  read -p "Do you want to install Docker now? (y/n): " instalar
   if [[ "$instalar" == "s" ]]; then
     instalar_docker
   else
-    echo "Docker eh necessario para rodar o projeto. Saindo..."
+    echo "Docker is necessary to run the project. Exiting..."
     exit 1
   fi
 fi
 
 # +++ Verifica se Docker Compose V2 esta disponivel +++
 if ! docker compose version &> /dev/null; then
-  echo "Docker Compose V2 nao encontrado (comando 'docker compose')."
-  echo "Verifique se voce instalou a versao mais recente do Docker CLI com plugin Compose embutido."
+  echo "Docker Compose V2 not found."
+  echo "Check if you have installed the latest version of Docker CLI with the embedded Compose plugin."
   exit 1
 fi
 
-echo "Docker e Compose estao prontos!"
+echo "Docker and Compose are ready!"
 echo ""
 
 # +++ Menu principal +++
 echo "================= SHELLKITTY Docker MENU ================="
-echo "Escolha uma opcao:"
-echo "1 - Iniciar containers (reaproveitar imagens antigas)"
-echo "2 - Iniciar containers (reconstruir imagens)"
-echo "3 - Parar containers"
-echo "4 - Parar e apagar tudo (inclui dados do banco)"
-echo "5 - Parar e remover orfaos (sem apagar dados)"
-echo "6 - Ver containers ativos"
-echo "7 - Ver todos os containers"
-echo "8 - Ver logs da aplicacao"
-echo "0 - Sair"
+echo "Choose an option:"
+echo "1 - Start containers (reuse old images)"
+echo "2 - Start containers (reconstruct images)"
+echo "3 - Stop containers"
+echo "4 - Stop and remove all containers (includes database)"
+echo "5 - Stop and remove orphans (without deleting data)"
+echo "6 - View active containers"
+echo "7 - View all containers"
+echo "8 - View logs aplication"
+echo "0 - Exit"
 echo "=========================================================="
 
-read -p "Digite a opcao desejada: " opcao
+read -p "Enter the option: " opcao
 
 case $opcao in
   1)
-    echo "Subindo containers com imagens existentes..."
+    echo "Uploading containers with existing images..."
     docker compose up -d
     ;;
   2)
-    echo "Reconstruindo imagens e subindo containers..."
+    echo "Rebuilding images and uploading containers..."
     docker compose up -d --build
     ;;
   3)
-    echo "Parando containers..."
+    echo "Stopping containers..."
     docker compose down
     ;;
   4)
-    echo "Isso vai apagar TODOS os dados (incluindo o banco)."
-    read -p "Tem certeza? (s/n): " confirmacao
+    echo "This will erase all data (including the database)."
+    read -p "Sure you want to continue? (s/n): " confirmacao
     if [[ "$confirmacao" == "s" ]]; then
       docker compose down --volumes --remove-orphans
     else
-      echo "Acao cancelada."
+      echo "Action canceled."
     fi
     ;;
   5)
-    echo "Removendo containers orfaos (mantendo os dados)..."
+    echo "Removing orphaned containers (keeping the data)..."
     docker compose down --remove-orphans
     ;;
   6)
-    echo "Containers ativos:"
+    echo "Active containers:"
     docker ps
     ;;
   7)
-    echo "Todos os containers (ativos e inativos):"
+    echo "All containers (active and inactive):"
     docker ps -a
     ;;
   8)
-    echo "Logs da aplicacao (java-app):"
+    echo "Logs aplication (java-app):"
     docker logs java-app
     ;;
   0)
-    echo "Saindo..."
+    echo "Exiting..."
     exit 0
     ;;
   *)
-    echo "Opcao invalida."
+    echo "Invalid option. Please try again."
     ;;
 esac

@@ -12,14 +12,13 @@ echo "
 
 Options:
 [0] Exit
-[1] Menu
-[2] Database [2.1] PostgreSQL [2.2] MariaDB [2.3] MySQL
-[3] Docker
-[4] Kubernetes
-[5] Managers --> spark e maven
-[6] OS --> docker + debian (neofecth e start) e comandos internos
-[7] Security --> passa o ip do site e faz u
-[8] IA --> Python, PyTorch, TensorTable
-[9] QA --> testa e gere um relatorio de log, salvando em .txt se tem e funciona (postgresql, mariadb, mysql, docker, kubernetes, python, java, spark, maven, iA)
+[1] Database, quando clicar opcoes [2.1] PostgreSQL [2.2] MariaDB [2.3] MySQL
+[2] Docker
+[3] Kubernetes
+[4] Managers 
+[5] OS 
+[6] Security, quando clicar opcoes [6.1] kali linux enviroment [6.2] eyelock portscan
+[8] IA 
+[9] QA 
 
-@ Developed by Rainbowcrack"
+@ Developed by Rainbowcrack - Izabel Chaves"
