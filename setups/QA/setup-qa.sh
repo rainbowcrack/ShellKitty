@@ -13,6 +13,10 @@ POSTGRES_CONTAINER_NAME="my_postgres"
 BACKEND_TEST_ROUTE="http://localhost:${BACKEND_PORT}/api/status"
 FRONTEND_TEST_ROUTE="http://localhost:${FRONTEND_PORT}"
 
+# install nmap
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y nmap
+
 # Function to check if a port is listening
 check_port() {
     local PORT=$1

@@ -1,6 +1,6 @@
 # ShellKitty
 
-<img src="kitty.png" alt="Imagem do gatinho" width="200"/>
+<img src="img/kitty.png" alt="Imagem do gatinho" width="200"/>
 
 > **Automatize aplicações e tarefas de sistema com testes de segurança, em menos de 1 minuto!**  
 > ShellKitty é um projeto em Shell Script (Bash) voltado para automação de ambientes Linux, MacOS, Android (via Termux), BSD, Cloud e Docker, com foco em **agilidade, qualidade, testes e segurança**.
@@ -25,20 +25,9 @@ Clone meu repositório e dê o privilégio do arquivo principal para execução.
 ```bash
 git clone https://github.com/rainbowcrack/shellkitty.git
 cd shellkitty
-chmod +x shellkitty.sh
+chmod 777 shellkitty.sh
 ./shellkitty.sh
 ```
 
 ## Tela Inicial
-
-```bash
-/\_/\  
-( o.o )  
- > ^ < ........... HELLO TO SHELLKITTY ><)))º>
-
-Options:
-[0] Exit
-[1] Menu
-[2] Postgre
-[3] Maven and Spark
-[4] Docker
+<img src="img/menu.png" alt="Imagem do gatinho" width="200"/>
