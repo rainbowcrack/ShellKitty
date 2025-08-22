@@ -1,11 +1,11 @@
 #!/bin/bash
 
 clear
-echo "Iniciando verificacao do ambiente Minikube + Kubernetes..."
+echo "Starting verification of the Minikube + Kubernetes environment..."
 
 # +++ Funcao para instalar Minikube + kubectl (Debian/Ubuntu) +++
 instalar_minikube() {
-  echo "Instalando Minikube e kubectl..."
+  echo "Installing Minikube and kubectl..."
 
   sudo apt update -y
   sudo apt install -y curl apt-transport-https ca-certificates conntrack
@@ -20,25 +20,25 @@ instalar_minikube() {
   sudo install minikube-linux-amd64 /usr/local/bin/minikube
   rm minikube-linux-amd64
 
-  echo "Minikube e kubectl instalados com sucesso!"
+  echo "Minikube and kubectl installed successfully!"
 }
 
 # +++ Verifica se o Minikube esta instalado +++
 if ! command -v minikube &> /dev/null; then
-  echo "Minikube nao encontrado."
-  read -p "Deseja instalar o Minikube agora? (s/n): " instalar
+  echo "Minikube not found"
+  read -p "Do you want to install Minikube now? (y/n): " instalar
   if [[ "$instalar" == "s" ]]; then
     instalar_minikube
   else
-    echo "Minikube eh necessario para este menu. Saindo..."
+    echo "Minikube is necessary for this menu. Exiting..."
     exit 1
   fi
 fi
 
 # +++ Verifica se o kubectl está instalado +++
 if ! command -v kubectl &> /dev/null; then
-  echo "kubectl não encontrado."
-  echo "Voce precisa do kubectl para se comunicar com o cluster."
+  echo "kubectl not found."
+  echo "You need kubectl to communicate with the cluster."
   exit 1
 fi
 
@@ -46,32 +46,32 @@ fi
 while true; do
   echo ""
   echo "================= SHELLKITTY K8s MENU ================="
-  echo "1 - Iniciar Minikube"
-  echo "2 - Parar Minikube"
-  echo "3 - Ver pods ativos"
-  echo "4 - Ver todos os recursos (pods, services, deployments)"
-  echo "5 - Remover um pod"
-  echo "6 - Remover um deployment"
-  echo "7 - Ver logs de um pod"
-  echo "0 - Sair"
+  echo "1 - Start Minikube"
+  echo "2 - Stop Minikube"
+  echo "3 - View active pods"
+  echo "4 - See all resources (pods, services, deployments)"
+  echo "5 - Remove an pod"
+  echo "6 - Remove an deployment"
+  echo "7 - View logs of pod"
+  echo "0 - Exit"
   echo "=========================================================="
-  read -p "Digite a opcao desejada: " opcao
+  read -p "Enter the option: " opcao
 
   case $opcao in
     1)
-      echo "Iniciando Minikube..."
+      echo "Starting Minikube..."
       minikube start
       ;;
     2)
-      echo "Parando Minikube..."
+      echo "Stopping Minikube..."
       minikube stop
       ;;
     3)
-      echo "Listando pods ativos..."
+      echo "Listening active pods..."
       kubectl get pods
       ;;
     4)
-      echo "Todos os recursos:"
+      echo "All resources:"
       kubectl get all
       ;;
     5)
@@ -87,11 +87,11 @@ while true; do
       kubectl logs "$logpod"
       ;;
     0)
-      echo "Saindo do menu Kubernetes..."
+      echo "Exiting Kubernetes menu..."
       break
       ;;
     *)
-      echo "Opcao invalida. Tente novamente."
+      echo "Option not found. Try again."
       ;;
   esac
 done
