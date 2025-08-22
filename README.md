@@ -23,10 +23,12 @@ Inspirado na disciplina **Trabalho Interdisciplinar II** da **PUC Minas**, do cu
 Clone meu repositório e dê o privilégio do arquivo principal para execução. Para isso, cole o seguinte código no terminal!!
 
 ```bash
+mkdir shellframework
+cd shellframework
 git clone https://github.com/rainbowcrack/shellkitty.git
-cd shellkitty
-chmod 777 shellkitty.sh
-./shellkitty.sh
+cd ShellKitty
+chmod 777 menu.sh
+./menu.sh
 ```
 
 ## Tela Inicial

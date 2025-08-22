@@ -19,10 +19,12 @@ This project prepares the operating system environment focusing on **full-stack 
 Clone my repository and give the main file execution privilege. To do this, paste the code into the terminal!!
 
 ```bash
+mkdir shellframework
+cd shellframework
 git clone https://github.com/rainbowcrack/shellkitty.git
-cd shellkitty
-chmod 777 shellkitty.sh
-./shellkitty.sh
+cd ShellKitty
+chmod 777 menu.sh
+./menu.sh
 ```
 
 ## Initial Screen
