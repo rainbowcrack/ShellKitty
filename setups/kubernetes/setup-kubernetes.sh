@@ -75,15 +75,15 @@ while true; do
       kubectl get all
       ;;
     5)
-      read -p "Digite o nome do pod a ser removido: " podname
+      read -p "Enter the name of the pod to be removed: " podname
       kubectl delete pod "$podname"
       ;;
     6)
-      read -p "Digite o nome do deployment a ser removido: " deployname
+      read -p "Enter the name of the deployment to be removed: " deployname
       kubectl delete deployment "$deployname"
       ;;
     7)
-      read -p "Digite o nome do pod para ver os logs: " logpod
+      read -p "Enter the pod name to see the logs: " logpod
       kubectl logs "$logpod"
       ;;
     0)
